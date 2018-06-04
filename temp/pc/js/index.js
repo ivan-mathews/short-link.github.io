@@ -4,31 +4,33 @@
 		TIMER = function () {
 			
 				var timer 	= $('span.time').text();
-				var url 	= $('input[type=hidden]').attr('link');
-				var name 	= $('input[type=hidden]').attr('name');
-				var value 	= $('input[type=hidden]').attr('value');
-
-				if(timer >= 1){
-					
-					$('span.time').html(parseInt(timer)-1);
-
-					setTimeout('TIMER()', 1000);
-					
-				}else{
-					
-					$.post(url, {sid:value,hash:name}, function(result){
-
-						if(result.link){
-							window.location.href=result.link;
-						}
-						if(result.error){
-							$('div.link_block').html('<div class="error">' + result.error + '</div>');
-						}
-					}, 'json');
-				}
 				
-				return true;
+				if(timer){
+					
+					var url 	= $('input[type=hidden]').attr('link');
+					var name 	= $('input[type=hidden]').attr('name');
+					var value 	= $('input[type=hidden]').attr('value');
 
+					if(timer >= 1){
+						
+						$('span.time').html(parseInt(timer)-1);
+
+						setTimeout('TIMER()', 1000);
+						
+					}else{
+						
+						$.post(url, {sid:value,hash:name}, function(result){
+
+							if(result.link){
+								window.location.href=result.link;
+							}
+							if(result.error){
+								$('div.link_block').html('<div class="error">' + result.error + '</div>');
+							}
+						}, 'json');
+					}
+				}
+			return true;
 		}
 	);
 	
