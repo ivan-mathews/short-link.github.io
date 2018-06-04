@@ -1,0 +1,37 @@
+<?php
+
+	define('USER',			'Пользователь');
+	define('NOT_FOUND',		'не найден');
+	define('ERROR',			'Произошла ошибка!');
+	define('TRY_NOW',		'Попробуйте еще раз.');
+	define('IS_ZANIAT',		'уже занят');
+	define('IS_SUSHES',		'уже существует.');
+	define('LOGIN',			'Логин');
+	define('F_NAME',		'Имя');
+	define('NAME',			'Имя ссылки');
+	define('GET_STAT',		'Статистика');
+	define('L_NAME',		'Фамилия');
+	define('NO_SUCH',		'Информации по вашему запросу не существует');
+	define('EMAIL',			'E-mail');
+	define('PASSWORD',		'Пароль');
+	define('PASS_SMALL',	'Пароль не должен быть меньше 6 символов');
+	define('NOT_COR_MAIL',	'Введен некорректный e-mail');
+	define('FIELD',			'Поле');
+	define('MUST_BE',		'должно быть заполнено');
+	define('AUTH',			'Авторизация');
+	define('REG',			'Регистрация');
+	define('QUIT',			'Выйти');
+	define('FAST',			'Войти');
+	define('LINK',			'Ссылка');
+	define('LINKS',			'Ссылки');
+	define('NEW_LINK',		'Добавить');
+	define('MEMBER_ME',		'Запомнить');
+	define('ENTER_LINK',	'Введите ссылку');
+	define('ENTER_NAME',	'Введите имя ссылки');
+	define('GO',			'Вперед');
+	define('SECOND',		'сек');
+	define('QUERY_TIME',	'Время');
+	define('EDIT',			'редактировать');
+	define('DEL',			'удалить');
+	define('GENERATED',		'будет сгенерирована через');
+	define('REQUESTED',		'Запрашиваемый');

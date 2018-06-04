@@ -1,0 +1,26 @@
+<?php
+
+	return array(
+		'DELIMITER'		=> '/',
+		'DEF_MODULE'	=> 'Main',
+		'DEF_ACTION'	=> 'Index',
+		'DEF_TITLE'		=> 'NEW SITE',
+		'lang_lc'		=> 'ru_RU',
+		'KEY_WORD'		=> 'ODAyMWFhMzUwNjQ4NWQ3NWRkNmE1ZTc3Yjc2OTBmZmE3ZjRlNzc4NDQ3MTQ0YTkxZDJlNDQwMjJjZTk5ODhkMTJjNWM0NGEyNWRhZjU0M2VmMmM5ZjRlNzNiMzQ5MzFhNWFjZDY4NWQ3ZGM2ODkwNDllZjcyNGQ0MjY4NDYwNzhkMjgzNDkyNTVmN2U5YWZmNmUxZjcyNTE3ODc5ZWFiMGJiMmI0NjlhOTNkMjA1MmUxYmU1OTJlOTUxZmRjOTUzMmE3NGRiMjVjNjkxMGY4ZmFkYjUyOTNhMDFlOTg1YmVjYjIyYWY3OWU0MDg4YWY5MzE4NmZiYzZiMjE2MTIzNTFiODQ2MmVhNTUzOTczMDY4YWE0NDkwMTVkOTRmMTZmZmI1ODMxY2Q2OGIyNGJiY2I4MThhZmQzMmEzMGRhNzY',
+		'RUN_ACTION'	=> 'Run',
+		'REMOTE_ACT'	=> 'Act',
+		'DEFAULT_THEME'	=> 'pc',
+		'db_host'		=> 'localhost',
+		'db_user'		=> 'root',
+		'db_pass'		=> '',
+		'db_base'		=> 'dd',
+		'port'			=> NULL,
+		'clear_sql_mode'=> false,
+		'db_prefix'		=> '',
+		'sess_time'		=> 100*365*86400,
+		'SESS_DIR'		=> false,
+		'SESS_DIR_NAME'	=> 'SESS',
+		'ONLINE_TIME'	=> 900,
+		'TIME_OUT'		=> 30,
+		'TIME_ZONE'		=> 'Europe/Kiev',
+	);
