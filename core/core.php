@@ -2,7 +2,7 @@
 
 	class Core{
 		
-		private static $i;
+		private static $i, $delimiter;
 		
 		public $uri, $url, $action, $module, $query, $conf, $base, $user, $item, $alias;
 		
@@ -22,6 +22,7 @@
 //			$this->lang = Lang::I();
 			
 			$this->LoadLang($this->user->lang);
+			self::$delimiter = $this->conf->DELIMITER;
 		}
 /*----------------------------------------------------------------------------------------------------------------------*/
 		public function __destruct(){
@@ -275,15 +276,15 @@
 /*----------------------------------------------------------------------------------------------------------------------*/
 		public static function Go($module, $action=false, $params=false){
 			
-			$module = '/'.$module;
-			$action = !empty($action) ? '/'.$action : '';
+			$module = $module;
+			$action = !empty($action) ? self::$delimiter.$action : '';
 			$params = !empty($params) ? '?'.$params : '';
 			
 			if($params){
 				$params = urldecode(http_build_query($params));
 			}
 			
-			header('location:'.$module.$action.$params);
+			header('location:/'.$module.$action.$params);
 		}
 /*----------------------------------------------------------------------------------------------------------------------*/
 		public function isAjax(){
