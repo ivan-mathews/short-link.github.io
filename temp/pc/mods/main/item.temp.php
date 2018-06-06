@@ -3,11 +3,11 @@
 <table border="1">
    <tr>
 		<th>№</th>
-		<th>Дата</th>
-		<th>Ссылка</th>
-		<th>URL-ссылки</th>
-		<th>Имя ссылки</th>
-		<th>Просмотры</th>
+		<th><?php print GET_DATE; ?></th>
+		<th><?php print LINK; ?></th>
+		<th><?php print GET_URL; ?></th>
+		<th><?php print NAME; ?></th>
+		<th><?php print GET_VIEW; ?></th>
    </tr>
 	   
 	<?php foreach($data as $key=>$value){ ?>

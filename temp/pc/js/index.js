@@ -47,5 +47,9 @@
 			$('span.srv_date').html(new_date);
 			$('span.srv_date').attr('alt',new_time);
 			
-			setTimeout('data()', 1000);
+			setTimeout('data()', 1050);
 	});
+
+	function Sel(i) {
+		   document.forms[0].elements[i].select();
+	}

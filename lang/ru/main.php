@@ -35,3 +35,6 @@
 	define('DEL',			'удалить');
 	define('GENERATED',		'будет сгенерирована через');
 	define('REQUESTED',		'Запрашиваемый');
+	define('GET_DATE',		'Дата');
+	define('GET_URL',		'URL-ссылки');
+	define('GET_VIEW',		'Просмотры');

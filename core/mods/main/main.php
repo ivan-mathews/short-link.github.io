@@ -58,7 +58,10 @@
 			
 			if(!$this->core->user->logged){ Core::Go('auth','index'); }
 			
-			$data = $this->core->base->GetRows('stat',"`link_id`='{$id}' AND `user_id` = {$this->core->user->id}",'*','id DESC');
+			$admin = '';
+			if(!$this->core->user->admin){ $admin = " AND `user_id` = {$this->core->user->id}"; }
+			
+			$data = $this->core->base->GetRows('stat',"`link_id`='{$id}' {$admin}",'*','id DESC');
 
 			$this->temp->RenderAction('item',array('data'=>$data));
 		}
@@ -150,13 +153,16 @@
 			
 			if(empty($id)){ Core::Error404(); }
 			
-			$linx = $this->core->base->GetRow('aliases',"`id`='{$id}' AND `user_id` = {$this->core->user->id}");
+			$admin = '';
+			if(!$this->core->user->admin){ $admin = " AND `user_id` = {$this->core->user->id}"; }
+			
+			$linx = $this->core->base->GetRow('aliases',"`id`='{$id}' {$admin}");
 			
 			if(empty($linx)){ Core::Error404(); }
 			
 			if($linx['user_id'] == $this->core->user->id AND ($link AND $name) AND !$errors){
 
-				$updated = $this->core->base->Update('aliases',"`id`='{$id}' AND `user_id` = {$this->core->user->id}",array('link'=>$link,'name'=>$name),true);
+				$updated = $this->core->base->Update('aliases',"`id`='{$id}' {$admin}",array('link'=>$link,'name'=>$name),true);
 			}
 			
 			if($updated){
@@ -181,8 +187,11 @@
 			
 			if(empty($id)){ Core::Error404(); }
 			
-			$link = $this->core->base->GetRow('aliases',"`id`='{$id}' AND `user_id` = {$this->core->user->id}");
-			$data = $this->core->base->GetRows('stat',"`link_id`='{$id}' AND `user_id` = {$this->core->user->id}");
+			$admin = '';
+			if(!$this->core->user->admin){ $admin = " AND `user_id` = {$this->core->user->id}"; }
+			
+			$link = $this->core->base->GetRow('aliases',"`id`='{$id}' {$admin}");
+			$data = $this->core->base->GetRows('stat',"`link_id`='{$id}' {$admin}");
 			
 			if(empty($link)){ Core::Error404(); }
 			

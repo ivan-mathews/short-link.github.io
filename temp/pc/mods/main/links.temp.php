@@ -13,18 +13,12 @@
 	}
 </style>
 
-<script language="javascript" type="text/javascript">
-	function Sel(i) {
-		   document.forms[0].elements[i].select();
-	}
-</script>
-
 <table border="1">
 	<tr>
 		<th>№</th>
-		<th>Дата</th>
-		<th>Ссылка</th>
-		<th>URL-ссылки</th>
+		<th><?php print GET_DATE; ?></th>
+		<th><?php print LINK; ?></th>
+		<th><?php print GET_URL; ?></th>
 		<th></th>
 		<th></th>
 		<th></th>
