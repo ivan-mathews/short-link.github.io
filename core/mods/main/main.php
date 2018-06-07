@@ -90,11 +90,9 @@
 				$sid	= User::SessionIDCreate(256);
 				$hash	= User::Hash($sid,true);
 				
-				$this->core->user->SessUpd('sess',array('sid'=>$sid,'hash'=>$hash));
-				$this->core->user->SessUpd('date',time());
-			}else{
-				$sid	= $this->core->user->sess['sid'];
-				$hash	= $this->core->user->sess['hash'];
+				$this->core->user->{$this->core->alias} = $this->core->alias;
+				
+				$this->core->user->SessUpd($this->core->user->{$this->core->alias},array('date'=>time(),'sid'=>$sid,'hash'=>$hash));
 			}
 			
 			if($this->core->IsAJAX()){
@@ -102,32 +100,35 @@
 				$date 	= strtotime(date('Y-m-d'));
 				$datas 	= $this->core->base->GetRow('stat',"`link_id`='{$id}' AND `date_follow`='{$date}'");
 
-				if(!empty($linx) AND $linx['user_id'] != $this->core->user->id AND 
-					$this->core->user->sess['sid'] 	== htmlspecialchars(Core::Get('sid')) AND 
-					$this->core->user->sess['hash'] == htmlspecialchars(Core::Get('hash')) AND $linx['link'] AND 
-					$this->core->user->date + $this->core->conf->TIME_OUT <= time()){
-					
-					$data = array(
-						'link_id'		=> $id,
-						'date_follow'	=> $date,
-						'user_id'		=> $linx['user_id'],
-						'link_uri'		=> $linx['uri'],
-						'link_name'		=> $linx['name'],
-						'link_link'		=> $linx['link'],
-						'date'			=> time(),
-						'count'			=> '1'
-					);
-		
-					if(empty($datas)){
-						$this->core->base->Insert('stat',$data,true);
-					}else{
-						$this->core->base->Update('stat',"`id`={$datas['id']} AND `date_follow`='{$date}'",
-						array('count'=>$datas['count']+1,'user_id'=>$linx['user_id']),true);
+				if(!$this->core->user->{$this->core->alias}){
+					if(!empty($linx) AND $linx['user_id'] != $this->core->user->id AND 
+						$this->core->user->{$this->core->alias}['sid'] 	== htmlspecialchars(Core::Get('sid')) AND 
+						$this->core->user->{$this->core->alias}['hash'] == htmlspecialchars(Core::Get('hash')) AND $linx['link'] AND 
+						$this->core->user->{$this->core->alias}['date'] + $this->core->conf->TIME_OUT <= time()){
+						
+						$data = array(
+							'link_id'		=> $id,
+							'date_follow'	=> $date,
+							'user_id'		=> $linx['user_id'],
+							'link_uri'		=> $linx['uri'],
+							'link_name'		=> $linx['name'],
+							'link_link'		=> $linx['link'],
+							'date'			=> time(),
+							'count'			=> '1'
+						);
+			
+						if(empty($datas)){
+							$this->core->base->Insert('stat',$data,true);
+						}else{
+							$this->core->base->Update('stat',"`id`={$datas['id']} AND `date_follow`='{$date}'",
+							array('count'=>$datas['count']+1,'user_id'=>$linx['user_id']),true);
+						}
 					}
 				}
-				if($this->core->user->sess['sid'] 	== htmlspecialchars(Core::Get('sid')) AND 
-					$this->core->user->sess['hash'] == htmlspecialchars(Core::Get('hash')) AND $linx['link']
-					AND $this->core->user->date + $this->core->conf->TIME_OUT <= time()){
+				
+				if($this->core->user->{$this->core->alias}['sid'] 	== htmlspecialchars(Core::Get('sid')) AND 
+					$this->core->user->{$this->core->alias}['hash'] == htmlspecialchars(Core::Get('hash')) AND $linx['link']
+					AND $this->core->user->{$this->core->alias}['date'] + $this->core->conf->TIME_OUT <= time()){
 	
 					return $this->core->RenderJSON(array('link'=>$linx['link']));
 				}else{

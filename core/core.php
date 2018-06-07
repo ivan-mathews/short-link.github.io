@@ -95,6 +95,7 @@
 			if(!empty($module) AND !empty($action)){
 				$this->module 	= $module;
 				$this->action 	= $action;
+				$this->alias	= $uri;
 			}else{
 				$this->ParseURI($uri);
 			}
